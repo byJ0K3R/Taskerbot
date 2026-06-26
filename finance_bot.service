@@ -1,0 +1,19 @@
+[Unit]
+Description=Finance Tracker Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/finance_bot
+ExecStart=/home/ubuntu/finance_bot/venv/bin/python main.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Переменные окружения из файла .env
+EnvironmentFile=/home/ubuntu/finance_bot/.env
+
+[Install]
+WantedBy=multi-user.target
